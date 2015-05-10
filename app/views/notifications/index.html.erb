@@ -18,6 +18,7 @@
       <% else %>
     <tr class="success">
       <% end %>
+      <td><%= fa_icon notification.icon %></td>
       <td><%= notification.content %></td>
       <td><%= notification.created_at.strftime("%B %d, %Y") %></td>
 

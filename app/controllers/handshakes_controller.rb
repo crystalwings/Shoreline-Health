@@ -2,7 +2,7 @@ class HandshakesController < ApplicationController
   def create
     @user = User.find(params[:handshake][:followed_id])
     current_user.handshake!(@user)
-    @user.send_notification("You have been added to the network of " + current_user.full_name)
+    @user.send_notification("You have been added to the network of " + current_user.full_name, 'user-plus')
     respond_to do |f|
       f.html { redirect_to user_network_path(current_user) }
       f.js

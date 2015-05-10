@@ -4,20 +4,9 @@
     <%= link_to user_dashboard_path(current_user), class: 'btn btn-primary btn-justified' do %><%= fa_icon "list-alt" %> Timeline <% end %>
     <%= link_to user_summary_path(current_user), class: 'btn btn-default btn-justified' do %><%= fa_icon "file-text-o" %> Summary <% end %>
     <%= link_to user_metrics_path(current_user), class: 'btn btn-default btn-justified' do %><%= fa_icon "bar-chart" %> Trackers <% end %>
-    <div class="btn-group btn-block">
-      <a href="#" class="dropdown-toggle  btn-block btn btn-raised btn-default" data-toggle="dropdown">
-        <i class="fa fa-bars pull-left" style="margin-left: 10px;"></i> Sort
-      </a>
-      <ul class="dropdown-menu">
-        <li><%= link_to "Allergies", user_dashboard_path(@user), class: 'text-primary' %></li>
-        <li><%= link_to "Conditions", user_dashboard_path(@user), class: 'text-success' %></li>
-        <li><%= link_to "Symptom/Event", user_dashboard_path(@user), class: 'text-primary' %></li>
-        <li><%= link_to "Diagnosis", user_dashboard_path(@user), class: 'text-info' %></li>
-        <li><%= link_to "Doctor/Clinic Visits", user_dashboard_path(@user), class: 'text-danger' %></li>
-        <li><%= link_to "Immunization", user_dashboard_path(@user), class: 'text-warning' %></li>
-      </ul>
-    </div>
-  </div><br>
+    <%= render 'users/sort_dropdown' %>
+  </div>
+  <br>
   <div class="row">
     <div class="col-sm-12">
       <%= render 'users/timeline_table' %>

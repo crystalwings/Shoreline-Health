@@ -54,9 +54,12 @@ class MedicationsController < ApplicationController
   def create
     @user = User.find(medication_params[:user_id])
     @medication = @user.medications.new( medication_params)
-
+    
     respond_to do |format|
       if @medication.save
+        if @user != current_user.id 
+          @user.send_notification(current_user.full_name + " has added a medication to your profile", 'plus-square') 
+        end
         format.html { redirect_to user_dashboard_path(@medication.user), notice: 'Medication was successfully created.' }
         format.json { render json: @medication, status: :created, location: @medication }
       else
