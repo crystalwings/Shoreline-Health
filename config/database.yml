@@ -5,21 +5,24 @@
 #   gem 'sqlite3'
 development:
   adapter: postgresql
-  database: appname-dev
+  database: shoreline_development
   pool: 5
   host: localhost
-  username: action
-  password:
+  username: shoreline
+  password: secretpassword
+  port: 5432
 
 test:
   adapter: postgresql
-  database: appname-test
+  database: shoreline_test
   pool: 5
   host: localhost
-  username: action
-  password:
+  username: shoreline
+  password: secretpassword
 
 production:
   adapter: postgresql
-  database: tabbypostgresprod
+  database: shoreline_production
+  username: shoreline
+  password: secretpassword
   pool: 5

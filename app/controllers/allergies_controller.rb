@@ -57,6 +57,8 @@ class AllergiesController < ApplicationController
 
     respond_to do |format|
       if @allergy.save
+        if @user != current_user.id 
+          @user.send_notification(current_user.full_name + " has added an allergy to your profile", 'bug') 
         format.html { redirect_to user_summary_path(@allergy.user), notice: 'Allergy was successfully created.' }
         format.json { render json: @allergy, status: :created, location: @allergy }
       else

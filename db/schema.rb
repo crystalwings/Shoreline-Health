@@ -297,16 +297,6 @@ ActiveRecord::Schema.define(version: 20150510204227) do
     t.datetime "updated_at"
   end
 
-  create_table "identities", force: true do |t|
-    t.integer  "user_id"
-    t.string   "provider"
-    t.string   "uid"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
-
   create_table "immunizations", force: true do |t|
     t.integer  "user_id"
     t.string   "name"
@@ -544,29 +534,34 @@ ActiveRecord::Schema.define(version: 20150510204227) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
-    t.string   "provider"
-    t.string   "uid"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.string   "first_name"
     t.string   "last_name"
-    t.boolean  "b_use_btn_labels"
-    t.boolean  "b_use_wallpaper"
-    t.string   "wallpaper_url"
-    t.string   "gender"
-    t.boolean  "doner"
-    t.string   "address"
-    t.boolean  "avatar"
     t.string   "profile_name"
-    t.string   "imageurl"
+    t.string   "language"
+    t.string   "ethnicity"
+    t.text     "address"
+    t.datetime "birthday"
     t.date     "date_of_birth"
+    t.string   "phone_number"
+    t.string   "gender"
+    t.string   "doner"
     t.string   "bloodtype"
+    t.text     "bio"
+    t.string   "role"
+    t.string   "imageurl"
+    t.boolean  "b_use_btn_labels"
+    t.string   "wallpaper_url"
+    t.boolean  "b_use_wallpaper"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["first_name"], name: "index_users_on_first_name", using: :btree
+  add_index "users", ["last_name"], name: "index_users_on_last_name", using: :btree
+  add_index "users", ["profile_name"], name: "index_users_on_profile_name", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "weights", force: true do |t|

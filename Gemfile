@@ -39,6 +39,7 @@ gem 'acts-as-taggable-on'
 gem 'groupdate'
 gem 'birthday'
 gem 'acts_as_commentable'
+gem 'i18n', '~> 0.7.0'
 gem 'activeadmin', github: 'gregbell/active_admin'
 #gem 'nokogiri', '~> 1.6.1'
 # Use sqlite3 as the database for Active Record

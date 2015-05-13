@@ -58,7 +58,7 @@ class MedicationsController < ApplicationController
     respond_to do |format|
       if @medication.save
         if @user != current_user.id 
-          @user.send_notification(current_user.full_name + " has added a medication to your profile", 'plus-square') 
+          @user.send_notification(current_user.full_name + " has added a medication to your profile.", 'plus-square') 
         end
         format.html { redirect_to user_dashboard_path(@medication.user), notice: 'Medication was successfully created.' }
         format.json { render json: @medication, status: :created, location: @medication }

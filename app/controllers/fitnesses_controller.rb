@@ -48,6 +48,8 @@ class FitnessesController < ApplicationController
 
     respond_to do |format|
       if @fitness.save
+        if @user != current_user.id 
+          @user.send_notification(current_user.full_name + " has added a fitness event to your profile.", 'bicycle') 
         format.html { redirect_to user_fitnesses_path(@fitness.user), notice: 'Fitness was successfully created.' }
         format.json { render json: @fitness, status: :created, location: @fitness }
       else

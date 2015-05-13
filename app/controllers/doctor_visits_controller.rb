@@ -57,6 +57,8 @@ class DoctorVisitsController < ApplicationController
 
     respond_to do |format|
       if @doctor_visit.save
+        if @user != current_user.id 
+          @user.send_notification(current_user.full_name + " has added a doctor visit to your profile", 'user-md') 
         if params[:photos]
           #===== The magic is here ;)
           params[:photos].each { |photo|

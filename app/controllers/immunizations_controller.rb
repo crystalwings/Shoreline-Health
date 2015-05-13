@@ -55,6 +55,8 @@ class ImmunizationsController < ApplicationController
 
     respond_to do |format|
       if @immunization.save
+        if @user != current_user.id 
+          @user.send_notification(current_user.full_name + " has added an immunization record to your profile.", 'code-fork') 
         format.html { redirect_to user_immunizations_path(@immunization.user), notice: 'Immunization was successfully created.' }
         format.json { render json: @immunization, status: :created, location: @immunization }
       else

@@ -64,7 +64,7 @@ class SymptomsController < ApplicationController
             }
         end
         if @user.id != current_user.id
-          @user.send_notification("A symptom/event has been added to your record by " + current_user.full_name)
+          @user.send_notification("A symptom/event has been added to your record by " + current_user.full_name, 'heartbeat')
         end
         format.html { redirect_to user_dashboard_path(@symptom.user), notice: 'symptom was successfully created.' }
         format.json { render json: @symptom, status: :created, location: @symptom }
